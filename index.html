@@ -1515,6 +1515,14 @@ body {
     padding-top: 4px;       /* не даём маргинам схлопнуться, кнопка реально опустится ниже */
   }
 }
+
+
+/* Полностью отключаем мигание монетки ₽ на всех устройствах */
+#buks-landing .hero-coin,
+#buks-landing .icon-money,
+#buks-landing .hero-icon-money::after {
+  animation: none !important;
+}
   
 </style>
 
