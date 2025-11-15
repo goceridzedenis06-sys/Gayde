@@ -1353,6 +1353,108 @@ min-height: 100vh;
   
   }
 }
+
+/* ===== МОБИЛЬНАЯ ОПТИМИЗАЦИЯ (ускоряем и поджимаем) ===== */
+@media (max-width: 600px) {
+
+  /* Поменьше шрифты, чуть компактнее всё */
+  #buks-landing h1 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  #buks-landing h2 {
+    font-size: 24px;
+  }
+
+  #buks-landing p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  #buks-landing .guide-card p,
+  #buks-landing .why-item p,
+  #buks-landing .step-card p {
+    font-size: 15px;
+  }
+
+  /* Убираем тяжёлый scale у второго блока */
+  #buks-landing .guide-section {
+    transform: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 40px 0 40px;
+  }
+
+  /* Фон "Почему это работает" — без fixed, он очень тормозит */
+  #buks-landing .why-section {
+    background-attachment: scroll;
+  }
+
+  /* Облегчаем карточки: без blur и жирных теней */
+  #buks-landing .guide-card,
+  #buks-landing .why-item,
+  #buks-landing .step-card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    backdrop-filter: none;
+    border-color: rgba(46, 204, 113, 0.2);
+    transition: none;
+  }
+
+  #buks-landing .guide-card:hover,
+  #buks-landing .why-item:hover,
+  #buks-landing .step-card:hover {
+    transform: none;
+    box-shadow: 0 0 12px rgba(0,0,0,0.8);
+  }
+
+  /* Давим постоянные неоновые анимации – они жрут FPS */
+  #buks-landing .btn-primary,
+  #buks-landing .accent-amount,
+  #buks-landing .hero-coin,
+  #buks-landing .icon-bulb,
+  #buks-landing .icon-pulse,
+  #buks-landing .steps-title,
+  #buks-landing .icon-hourglass,
+  #buks-landing .step-number,
+  #buks-landing .guide-section__title {
+    animation: none !important;
+  }
+
+  /* Первый экран чуть компактнее */
+  #buks-landing .hero {
+    padding-top: 40px !important;
+    padding-bottom: 32px !important;
+  }
+
+  #buks-landing .hero-sub {
+    margin-top: 6px;
+    margin-bottom: 10px;
+  }
+
+  #buks-landing .steps {
+    margin-top: 14px;
+    margin-bottom: 26px;
+  }
+
+  #buks-landing .step {
+    padding: 10px 18px;
+  }
+
+  /* Кнопка на мобилке — по ширине экрана, чтобы выглядело аккуратно */
+  #buks-landing .btn-primary {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Немного поджимаем все секции по вертикали */
+  #buks-landing .steps-section,
+  #buks-landing .why-section,
+  #buks-landing .cta-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
   
 </style>
 
