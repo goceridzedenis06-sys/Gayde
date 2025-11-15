@@ -1523,6 +1523,73 @@ body {
 #buks-landing .hero-icon-money::after {
   animation: none !important;
 }
+
+/* ==== ТОНКАЯ НАСТРОЙКА ГЕРОЯ + ПУЛЬСАЦИЯ КНОПКИ И "ОТ 2000₽+" ==== */
+
+/* более мягкая пульсация текста "от 2000₽+" + лёгкое утолщение */
+#buks-landing .accent-amount {
+  animation: amountPulse 2.6s ease-in-out infinite;
+}
+
+/* переопределяем анимацию amountPulse */
+@keyframes amountPulse {
+  0% {
+    transform: scale(1);
+    font-weight: 800;
+    text-shadow:
+      0 0 4px rgba(46, 204, 113, 0.5),
+      0 0 10px rgba(0, 0, 0, 0.8);
+  }
+  50% {
+    transform: scale(1.05);
+    font-weight: 900; /* на пике пульса — чуть жирнее */
+    text-shadow:
+      0 0 8px rgba(46, 204, 113, 0.9),
+      0 0 16px rgba(0, 0, 0, 1);
+  }
+  100% {
+    transform: scale(1);
+    font-weight: 800;
+    text-shadow:
+      0 0 4px rgba(46, 204, 113, 0.5),
+      0 0 10px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* лёгкая пульсация и подсветка основной кнопки (десктоп + мобилка) */
+#buks-landing .btn-primary {
+  animation: buttonPulseSoft 2.8s ease-in-out infinite;
+}
+
+@keyframes buttonPulseSoft {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 16px rgba(46, 204, 113, 0.6);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 26px rgba(46, 204, 113, 0.85);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 16px rgba(46, 204, 113, 0.6);
+  }
+}
+
+/* мобилка: поднимаем заголовок чуть выше и фиксируем анимацию кнопки */
+@media (max-width: 600px) {
+
+  /* заголовок ближе к верхнему краю */
+  #buks-landing .hero {
+    padding-top: 36px !important;  /* было больше – чуть поджали */
+  }
+
+  /* на всякий случай: включаем нашу мягкую пульсацию кнопки,
+     даже если выше где-то было animation: none; */
+  #buks-landing .btn-primary {
+    animation: buttonPulseSoft 2.8s ease-in-out infinite !important;
+  }
+}
   
 </style>
 
