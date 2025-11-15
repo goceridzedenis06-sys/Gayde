@@ -1455,6 +1455,50 @@ min-height: 100vh;
     padding-bottom: 50px;
   }
 }
+
+/* Фон страницы и убираем горизонтальный скролл */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* вместо белого – чёрный */
+}
+
+body {
+  overflow-x: hidden; /* на всякий случай, чтобы ничего не вылазило по ширине */
+}
+
+/* Точная подстройка мобильной версии */
+@media (max-width: 600px) {
+
+  /* Заголовок побольше */
+  #buks-landing h1 {
+    font-size: 24px;     /* было меньше */
+    line-height: 1.35;
+  }
+
+  /* Первый экран – чуть больше воздуха */
+  #buks-landing .hero {
+    padding-top: 52px !important;
+    padding-bottom: 44px !important;
+  }
+
+  /* Блок "Что тебя ждёт внутри гайда" – ниже и свободнее */
+  #buks-landing .guide-section {
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  #buks-landing .guide-section__title {
+    font-size: 26px;
+    margin-bottom: 34px;
+  }
+
+  /* Кнопка почти на всю ширину экрана */
+  #buks-landing .btn-primary {
+    width: 92%;
+    max-width: 380px;
+  }
+}
   
 </style>
 
