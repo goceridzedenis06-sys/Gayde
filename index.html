@@ -1696,6 +1696,41 @@ body {
     rgba(0, 0, 0, 0.85) 100%
   );
 }
+
+/* CTA внутри блока "Почему этот способ реально работает" */
+#buks-landing .inline-cta {
+  margin: 52px auto 0;
+  max-width: 640px;
+  text-align: center;
+}
+
+#buks-landing .inline-cta__title {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+#buks-landing .inline-cta__text {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 26px;
+  opacity: 0.95;
+}
+
+/* чуть компактнее на мобилке */
+@media (max-width: 600px) {
+  #buks-landing .inline-cta__title {
+    font-size: 24px;
+  }
+
+  #buks-landing .inline-cta__text {
+    font-size: 16px;
+  }
+
+  #buks-landing .inline-cta {
+    margin-top: 40px;
+  }
+}
   
 </style>
 
@@ -1873,15 +1908,38 @@ body {
 
 
   <!-- CTA -->
-  <section class="cta-section js-animate">
-    <h2>Готов начать зарабатывать на буксах без вложений?</h2>
-    <p class="cta-text">
+  <section class="why-section js-animate">
+  <h2 class="why-section_title">
+    Почему этот способ <span class="highlight">реально работает</span>
+    <svg class="icon-pulse" width="28" height="28" viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 12l2 2 4-4" stroke="#2ecc71" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </h2>
+
+  <div class="why-columns">
+    <!-- тут остаются твои карточки .why-item как были -->
+  </div>
+
+  <!-- 🔻 наш переносимый CTA внутрь блока -->
+  <div class="inline-cta">
+    <h2 class="inline-cta__title">
+      Готов начать зарабатывать на буксах без вложений?
+    </h2>
+    <p class="inline-cta__text">
       Забирай гайд, повторяй шаги и превращай свободное время в реальные деньги.
     </p>
     <a href="#" class="btn btn-primary">
       Получить гайд за 499₽
     </a>
-  </section>
+  </div>
+</section>
+
+<!-- 🔻 отдельный <section class="cta-section"> больше НЕ НУЖЕН, его удаляем -->
+<footer class="footer js-animate">
+  ...
+</footer>
 
   <!-- ФУТЕР -->
   <footer class="footer js-animate">
