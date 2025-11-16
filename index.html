@@ -1639,6 +1639,23 @@ body {
     margin-top: 40px;
   }
 }
+
+/* Фон страницы и убираем любой белый кантик по краям */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000 !important;
+}
+
+/* Растягиваем лендинг на всю ширину окна на десктопе */
+@media (min-width: 1024px) {
+  #buks-landing {
+    position: relative;
+    width: 100vw;        /* ровно ширина окна */
+    left: 50%;
+    margin-left: -50vw;  /* выравниваем по краям окна */
+  }
+}
   
 </style>
 
