@@ -843,9 +843,7 @@ min-height: 100vh;
 }
   /* убираем сильное затемнение сверху у последнего блока,
    чтобы переход от предыдущего был плавным */
-#buks-landing .cta-section::before {
-  content: none !important;
-}
+
 
 /* Мягкий переход к футеру */
 #buks-landing .cta-section::after {
@@ -869,6 +867,10 @@ min-height: 100vh;
   background: linear-gradient(to top, rgba(0, 0, 0, 0), #000000 100%);
   z-index: 5;
   pointer-events: none;
+}
+
+  #buks-landing .cta-section::before {
+  content: none !important;
 }
 
   #buks-landing .cta-text {
