@@ -1964,13 +1964,6 @@ html, body {
   margin-bottom: 26px;
 }
 
-#buks-landing .hero-btn-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px !important;   /* тут регулируешь высоту кнопки */
-  margin-bottom: 24px;
-  padding-top: 0 !important;
-}
 
 /* === ЖЁСТКИЙ ФИКС ПОЛОЖЕНИЯ КНОПКИ НА ПЕРВОМ ЭКРАНЕ === */
 #buks-landing section.hero .hero-btn-wrap {
@@ -1989,6 +1982,27 @@ html, body {
     margin-top: 40px !important;
     margin-bottom: 18px;
     top: 10px;
+  }
+}
+
+/* 🔧 СУПЕР-ФИНАЛЬНЫЙ ФИКС ПОЛОЖЕНИЯ КНОПКИ НА ПЕРВОМ ЭКРАНЕ */
+#buks-landing section.hero .hero-btn-wrap {
+  position: static !important;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px !important;   /* ← вот это число крути, чтобы опустить/поднять */
+  margin-bottom: 24px !important;
+  padding-top: 0 !important;
+  top: auto !important;
+}
+
+/* Отдельно для мобилки – можно сделать ближе или дальше */
+@media (max-width: 600px) {
+  #buks-landing section.hero .hero-btn-wrap {
+    position: static !important;
+    margin-top: 40px !important;  /* ← а это расстояние на телефоне */
+    margin-bottom: 18px !important;
+    top: auto !important;
   }
 }
   
