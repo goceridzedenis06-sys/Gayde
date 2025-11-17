@@ -1971,6 +1971,26 @@ html, body {
   margin-bottom: 24px;
   padding-top: 0 !important;
 }
+
+/* === ЖЁСТКИЙ ФИКС ПОЛОЖЕНИЯ КНОПКИ НА ПЕРВОМ ЭКРАНЕ === */
+#buks-landing section.hero .hero-btn-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px !important;  /* ← меняешь это число, чтобы опустить/поднять */
+  margin-bottom: 24px;
+  padding-top: 0 !important;
+  top: 20px;                    /* доп. сдвиг вниз относительно исходного места */
+}
+
+/* Отдельно для мобилки, чтобы тоже было ниже */
+@media (max-width: 600px) {
+  #buks-landing section.hero .hero-btn-wrap {
+    margin-top: 40px !important;
+    margin-bottom: 18px;
+    top: 10px;
+  }
+}
   
 </style>
  
