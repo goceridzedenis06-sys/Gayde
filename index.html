@@ -1964,45 +1964,37 @@ html, body {
   margin-bottom: 26px;
 }
 
-
-/* === ЖЁСТКИЙ ФИКС ПОЛОЖЕНИЯ КНОПКИ НА ПЕРВОМ ЭКРАНЕ === */
-#buks-landing section.hero .hero-btn-wrap {
-  position: relative;
+/* === АККУРАТНЫЙ CTA НА ПЕРВОМ ЭКРАНЕ === */
+#buks-landing .hero-btn-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 120px !important;  /* ← меняешь это число, чтобы опустить/поднять */
-  margin-bottom: 24px;
-  padding-top: 0 !important;
-  top: 40px;                    /* доп. сдвиг вниз относительно исходного места */
+  margin-top: 40px;   /* высота от шагов до кнопки */
+  margin-bottom: 0;   /* нет лишнего отступа вниз, всё контролит hero-note */
 }
 
-/* Отдельно для мобилки, чтобы тоже было ниже */
+/* текст под кнопкой */
+#buks-landing .hero-note {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #dcdcdc;
+  margin-top: 6px;    /* ← вот это расстояние между кнопкой и текстом */
+  margin-bottom: 0;
+  opacity: 0.95;
+}
+
+/* Мобилка: чуть компактнее */
 @media (max-width: 600px) {
-  #buks-landing section.hero .hero-btn-wrap {
-    margin-top: 40px !important;
-    margin-bottom: 18px;
-    top: 10px;
+  #buks-landing .hero-btn-wrap {
+    margin-top: 30px;
   }
-}
 
-/* 🔧 СУПЕР-ФИНАЛЬНЫЙ ФИКС ПОЛОЖЕНИЯ КНОПКИ НА ПЕРВОМ ЭКРАНЕ */
-#buks-landing section.hero .hero-btn-wrap {
-  position: static !important;
-  display: flex;
-  justify-content: center;
-  margin-top: 70px !important;   /* ← вот это число крути, чтобы опустить/поднять */
-  margin-bottom: 24px !important;
-  padding-top: 0 !important;
-  top: auto !important;
-}
-
-/* Отдельно для мобилки – можно сделать ближе или дальше */
-@media (max-width: 600px) {
-  #buks-landing section.hero .hero-btn-wrap {
-    position: static !important;
-    margin-top: 40px !important;  /* ← а это расстояние на телефоне */
-    margin-bottom: 18px !important;
-    top: auto !important;
+  #buks-landing .hero-note {
+    font-size: 13px;
+    max-width: 90%;
+    margin-top: 4px;  /* кнопка почти вплотную к тексту */
+    margin-left: auto;
+    margin-right: auto;
   }
 }
   
