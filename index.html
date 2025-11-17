@@ -1557,16 +1557,21 @@ body {
   }
 
 
-/* Единая ширина контента как у блока "Автор" */
-#buks-landing .section,               /* первый экран */
-#buks-landing .guide-section .inner,  /* "Что тебя ждёт внутри гайда" */
-#buks-landing .why-columns,           /* "Почему этот способ реально работает" */
+/* Контент растягиваем на всю ширину экрана */
+#buks-landing .section,
+#buks-landing .guide-section .inner,
+#buks-landing .why-columns,
 #buks-landing .steps-section .steps-grid,
 #buks-landing .steps-section .steps-title,
-#buks-landing .footer {
-  max-width: 880px;        /* как у author-section */
-  margin-left: auto;
-  margin-right: auto;
+#buks-landing .cta-section,
+#buks-landing .footer,
+#buks-landing .inline-cta {
+  max-width: 100%;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 
