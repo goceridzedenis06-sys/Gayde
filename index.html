@@ -202,14 +202,11 @@ min-height: 100vh;
 #buks-landing .guide-section {
   position: relative;
   
-  /* фон на весь экран, перекрывает предыдущий */
+  /* фон без лишнего верхнего градиента */
   background:
-  /* 👇 добавляем плавный переход вверх */
-  linear-gradient(to top, #000000 0%, rgba(0,0,0,0) 40%),
-  /* 👇 сохраняем твой основной фон и затемнение */
-  linear-gradient(rgba(40, 40, 40, 0.3), rgba(0, 0, 0, 0.55)),
-  url('https://static.tildacdn.com/tild3061-3836-4766-a263-373861333865/be75922d-2958-4e0f-b.png')
-  center center / cover no-repeat;
+    linear-gradient(rgba(40, 40, 40, 0.3), rgba(0, 0, 0, 0.55)),
+    url('https://static.tildacdn.com/tild3061-3836-4766-a263-373861333865/be75922d-2958-4e0f-b.png')
+    center center / cover no-repeat;
 
   background-color: #111; /* запасной цвет */
   color: #f5f5f5;
@@ -338,16 +335,7 @@ min-height: 100vh;
   margin: 0;
 }
 
-#buks-landing .guide-section::before {
-  content: "";
-  position: absolute;
-  top: -25px;      /* было -80px */
-  left: 0;
-  right: 0;
-  height: 25px;    /* было 80px */
-  background: linear-gradient(to bottom, rgba(17,17,17,1), rgba(17,17,17,0));
-  z-index: 1;
-}
+
 
 /* внутренняя часть блока (текст центрируется) */
 #buks-landing .guide-section .inner {
