@@ -1860,6 +1860,21 @@ html, body {
     margin-bottom: 0;                /* отступ даёт row-gap */
   }
 }
+
+/* Больше воздуха между карточками в блоке "Почему этот способ реально работает" */
+@media (min-width: 900px) {
+  #buks-landing .why-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 40px;  /* было 22px */
+    row-gap: 46px;     /* было 34px */
+  }
+
+  #buks-landing .why-item {
+    flex: 0 1 calc(33.333% - 60px); /* подстраиваем ширину под увеличенный gap */
+  }
+}
   
 </style>
  
