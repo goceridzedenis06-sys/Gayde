@@ -1841,10 +1841,28 @@ html, body {
     margin-bottom: 0;    /* отступы теперь задаёт row-gap */
   }
 }
+
+/* Десктоп: 3 карточки сверху, 2 снизу и нижние по центру */
+@media (min-width: 900px) {
+  #buks-landing .why-columns {
+    display: flex;              /* обратно flex */
+    flex-wrap: wrap;
+    justify-content: center;    /* центрируем каждую строку */
+    column-gap: 22px;
+    row-gap: 34px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  #buks-landing .why-item {
+    flex: 0 1 calc(33.333% - 40px);  /* максимум 3 карточки в ряд */
+    max-width: 320px;
+    margin-bottom: 0;                /* отступ даёт row-gap */
+  }
+}
   
 </style>
-
-  
+ 
 </head>
 <body>
 <div id="buks-landing">
