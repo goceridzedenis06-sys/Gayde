@@ -1823,6 +1823,24 @@ html, body {
     min-height: 150px; /* общая высота под текст, главное чтобы не меньше самой "толстой" карточки */
   }
 }
+
+/* Десктоп: в блоке "Почему этот способ реально работает" — 3 карточки сверху, 2 снизу */
+@media (min-width: 900px) {
+  #buks-landing .why-columns {
+    display: grid;                               /* вместо flex */
+    grid-template-columns: repeat(3, 1fr);       /* ровно 3 колонки */
+    column-gap: 22px;                            /* горизонтальный зазор как был */
+    row-gap: 34px;                               /* вертикальный зазор между рядами */
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  #buks-landing .why-item {
+    flex: none;          /* отключаем flex-поведение */
+    width: 100%;
+    margin-bottom: 0;    /* отступы теперь задаёт row-gap */
+  }
+}
   
 </style>
 
