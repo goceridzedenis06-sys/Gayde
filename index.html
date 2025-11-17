@@ -1403,17 +1403,12 @@ min-height: 100vh;
 
   /* Немного поджимаем все секции по вертикали */
   #buks-landing .steps-section,
-  #buks-landing .why-section,
- 
+  #buks-landing .why-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
 
-/* Фон страницы и убираем горизонтальный скролл */
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #000; /* вместо белого – чёрный */
-}
 
 body {
   overflow-x: hidden; /* на всякий случай, чтобы ничего не вылазило по ширине */
@@ -1555,7 +1550,7 @@ body {
   #buks-landing .guide-section {
     padding-top: 18px;
   }
-
+}
 
 /* Контент растягиваем на всю ширину экрана */
 #buks-landing .section,
@@ -1652,14 +1647,26 @@ html, body {
   background: #000 !important;
 }
 
-/* Растягиваем лендинг на всю ширину окна на десктопе */
-@media (min-width: 1024px) {
-  #buks-landing {
-    position: relative;
-    width: 100vw;        /* ровно ширина окна */
-    left: 50%;
-    margin-left: -50vw;  /* выравниваем по краям окна */
-  }
+/* Фон страницы и убираем любой кантик по краям */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  min-height: 100%;
+  background: #000 !important;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Лендинг растянут на всю ширину окна */
+#buks-landing {
+  margin: 0 !important;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
 }
   
 </style>
