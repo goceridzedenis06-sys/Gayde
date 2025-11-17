@@ -1993,7 +1993,7 @@ html, body {
 #buks-landing .hero-btn-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 50px !important;   /* КНОПКА НИЖЕ */
+  margin-top: 36px !important;   /* КНОПКА НИЖЕ */
   margin-bottom: 20px;
   padding-top: 0 !important;
 }
@@ -2053,6 +2053,71 @@ html, body {
 #buks-landing .hero.hero-loaded .steps         { transition-delay: 0.36s; }
 #buks-landing .hero.hero-loaded .hero-btn-wrap { transition-delay: 0.54s; }
 #buks-landing .hero.hero-loaded .hero-note     { transition-delay: 0.72s; }
+
+/* === СУПЕР-ФИНАЛЬНАЯ ПРАВКА ПЕРВОГО ЭКРАНА === */
+
+/* КНОПКА: опускаем ниже */
+#buks-landing .hero-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px !important;   /* ← чем больше число, тем ниже кнопка */
+  margin-bottom: 30px !important;
+}
+
+/* на мобиле чуть поменьше отступы */
+@media (max-width: 600px) {
+  #buks-landing .hero-btn-wrap {
+    margin-top: 34px !important;
+    margin-bottom: 18px !important;
+  }
+}
+
+/* Появление контента первого экрана — медленнее и заметнее */
+
+/* стартовое состояние */
+#buks-landing .hero-title,
+#buks-landing .hero-sub,
+#buks-landing .steps,
+#buks-landing .hero-btn-wrap,
+#buks-landing .hero-note {
+  opacity: 0;
+  transform: translateY(40px); /* снизу */
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* заголовок и подзаголовок — сверху */
+#buks-landing .hero-title,
+#buks-landing .hero-sub {
+  transform: translateY(-40px);
+}
+
+/* когда добавили .hero-loaded — всё проявляется */
+#buks-landing .hero.hero-loaded .hero-title,
+#buks-landing .hero.hero-loaded .hero-sub,
+#buks-landing .hero.hero-loaded .steps,
+#buks-landing .hero.hero-loaded .hero-btn-wrap,
+#buks-landing .hero.hero-loaded .hero-note {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* лесенка по времени (чуть медленнее) */
+#buks-landing .hero.hero-loaded .hero-title      { transition-delay: 0.00s; }
+#buks-landing .hero.hero-loaded .hero-sub        { transition-delay: 0.25s; }
+#buks-landing .hero.hero-loaded .steps           { transition-delay: 0.50s; }
+#buks-landing .hero.hero-loaded .hero-btn-wrap   { transition-delay: 0.75s; }
+#buks-landing .hero.hero-loaded .hero-note       { transition-delay: 1.00s; }
+
+/* Пульсация кнопки + стоп при наведении (на всякий случай — финальный вариант) */
+#buks-landing .btn-primary {
+  animation: buttonPulseSoft 2.8s ease-in-out infinite;
+}
+
+#buks-landing .btn-primary:hover {
+  animation: none !important;                       /* пульсация остановилась */
+  transform: translateY(-2px) scale(1.03);          /* лёгкий подъём */
+  box-shadow: 0 0 32px rgba(46, 204, 113, 0.95);
+}
   
 </style>
  
