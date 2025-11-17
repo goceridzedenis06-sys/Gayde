@@ -341,10 +341,10 @@ min-height: 100vh;
 #buks-landing .guide-section::before {
   content: "";
   position: absolute;
-  top: -80px; /* насколько “вверх” заходит градиент */
+  top: -25px;      /* было -80px */
   left: 0;
   right: 0;
-  height: 80px;
+  height: 25px;    /* было 80px */
   background: linear-gradient(to bottom, rgba(17,17,17,1), rgba(17,17,17,0));
   z-index: 1;
 }
@@ -1744,11 +1744,6 @@ html, body {
   bottom: -30px;  /* было -60px, подтягиваем ближе к блоку */
 }
 
-/* 👉 Верхний градиент в блоке гайда делаем втрое ниже */
-#buks-landing .guide-section::before {
-  height: 10px;   /* было 80px */
-  top: -10px;     /* было -80px, подтягиваем ближе к блоку */
-}
   
 </style>
 
