@@ -1875,6 +1875,32 @@ html, body {
     flex: 0 1 calc(33.333% - 60px); /* подстраиваем ширину под увеличенный gap */
   }
 }
+
+/* Базовый эффект для всех секций с js-animate */
+#buks-landing .js-animate {
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Когда IntersectionObserver добавляет .visible */
+#buks-landing .js-animate.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Небольшие задержки между блоками, чтобы "по очереди" всплывали */
+#buks-landing .hero.js-animate {
+  transition-delay: 0.05s;
+}
+
+#buks-landing .guide-section.js-animate {
+  transition-delay: 0.15s;
+}
+
+#buks-landing .why-section.js-animate {
+  transition-delay: 0.25s;
+}
   
 </style>
  
