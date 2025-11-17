@@ -1913,6 +1913,70 @@ html, body {
 #buks-landing .why-section.js-animate {
   transition-delay: 0.25s;
 }
+
+/* Кнопка на первом экране: ниже и по центру */
+#buks-landing .hero-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;   /* ↑ расстояние от овальных шагов */
+  margin-bottom: 20px;
+}
+
+/* Базовое состояние кнопки: мягкая пульсация */
+#buks-landing .btn-primary {
+  animation: buttonPulseSoft 2.8s ease-in-out infinite;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* При наведении: пульсация стоп + лёгкий подъём и свечение */
+#buks-landing .btn-primary:hover {
+  animation: none;                          /* ❗ вырубили пульсацию */
+  transform: translateY(-2px) scale(1.03);  /* лёгкий подскок */
+  box-shadow: 0 0 32px rgba(46, 204, 113, 0.95);
+}
+
+/* Не даём общему js-animate двигать .hero целиком */
+#buks-landing .hero.js-animate {
+  opacity: 1;
+  transform: none;
+}
+
+/* Стартовое состояние элементов героя (до класса .hero-loaded) */
+#buks-landing .hero-title,
+#buks-landing .hero-sub,
+#buks-landing .steps,
+#buks-landing .hero-btn-wrap,
+#buks-landing .hero-note {
+  opacity: 0;
+  transform: translateY(24px);                    /* по умолчанию снизу */
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Для заголовка и подзаголовка – наоборот, сверху */
+#buks-landing .hero-title,
+#buks-landing .hero-sub {
+  transform: translateY(-28px);
+}
+
+/* Состояние после загрузки: всё на месте и видно */
+#buks-landing .hero.hero-loaded .hero-title,
+#buks-landing .hero.hero-loaded .hero-sub,
+#buks-landing .hero.hero-loaded .steps,
+#buks-landing .hero.hero-loaded .hero-btn-wrap,
+#buks-landing .hero.hero-loaded .hero-note {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Небольшие задержки, чтобы всё появлялось «лесенкой» */
+#buks-landing .hero.hero-loaded .hero-title      { transition-delay: 0.00s; }
+#buks-landing .hero.hero-loaded .hero-sub        { transition-delay: 0.10s; }
+#buks-landing .hero.hero-loaded .steps           { transition-delay: 0.20s; }
+#buks-landing .hero.hero-loaded .hero-btn-wrap   { transition-delay: 0.30s; }
+#buks-landing .hero.hero-loaded .hero-note       { transition-delay: 0.40s; }
   
 </style>
  
@@ -2183,5 +2247,18 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(items[0]);
 });
 </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const hero = document.querySelector('#buks-landing .hero');
+    if (hero) {
+      // маленькая задержка, чтобы успело отрисоваться
+      setTimeout(function () {
+        hero.classList.add('hero-loaded');
+      }, 150);
+    }
+  });
+</script>
+  
 </body>
 </html>
