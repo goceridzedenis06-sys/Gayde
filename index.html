@@ -192,7 +192,7 @@
   #buks-landing .hero-btn-wrap {
     display: flex;
     justify-content: center;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
   }
 
   #buks-landing .hero-note {
@@ -976,7 +976,7 @@
   /* Кнопка "Получить гайд" чуть ниже */
   #buks-landing .hero-btn-wrap {
     margin-top: 14px;
-    margin-bottom: 36px;
+    margin-bottom: 40px;
   }
 
   /* Обёртка иконки — ближе к тексту и выше на линию заголовка */
@@ -1461,7 +1461,7 @@ body {
 
   /* Чуть-чуть оттолкнём кнопку вниз от шагов */
   #buks-landing .hero-btn-wrap {
-    padding-top: 4px;       /* не даём маргинам схлопнуться, кнопка реально опустится ниже */
+    padding-top: 8px;       /* не даём маргинам схлопнуться, кнопка реально опустится ниже */
   }
 }
 
@@ -1977,6 +1977,82 @@ html, body {
 #buks-landing .hero.hero-loaded .steps           { transition-delay: 0.20s; }
 #buks-landing .hero.hero-loaded .hero-btn-wrap   { transition-delay: 0.30s; }
 #buks-landing .hero.hero-loaded .hero-note       { transition-delay: 0.40s; }
+
+/* === ФИНАЛЬНАЯ НАСТРОЙКА ПЕРВОГО ЭКРАНА === */
+
+/* Отступы под заголовком и положение кнопки */
+#buks-landing .hero-sub {
+  margin: 14px auto 22px; /* подзаголовок чуть ближе к заголовку */
+}
+
+#buks-landing .steps {
+  margin-top: 20px;
+  margin-bottom: 26px; /* расстояние от шагов до кнопки */
+}
+
+#buks-landing .hero-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px !important;   /* КНОПКА НИЖЕ */
+  margin-bottom: 20px;
+  padding-top: 0 !important;
+}
+
+/* на мобилке чуть компактнее, но всё ещё с воздухом */
+@media (max-width: 600px) {
+  #buks-landing .hero-btn-wrap {
+    margin-top: 28px !important;
+    margin-bottom: 18px;
+    padding-top: 0 !important;
+  }
+}
+
+/* Пульсация кнопки + остановка при наведении */
+#buks-landing .btn-primary {
+  animation: buttonPulseSoft 2.8s ease-in-out infinite;
+}
+
+#buks-landing .btn-primary:hover {
+  animation: none !important;                /* пульсация стоп */
+  transform: translateY(-2px) scale(1.03);   /* лёгкий подъём */
+  box-shadow: 0 0 28px rgba(46, 204, 113, 0.9);
+}
+
+/* Плавное появление контента первого экрана */
+
+/* заголовок + подзаголовок прилетают сверху */
+#buks-landing .hero-title,
+#buks-landing .hero-sub {
+  opacity: 0;
+  transform: translateY(-24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+/* шаги, кнопка и подпись — снизу */
+#buks-landing .steps,
+#buks-landing .hero-btn-wrap,
+#buks-landing .hero-note {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+/* когда блок готов, всё проявляется */
+#buks-landing .hero.hero-loaded .hero-title,
+#buks-landing .hero.hero-loaded .hero-sub,
+#buks-landing .hero.hero-loaded .steps,
+#buks-landing .hero.hero-loaded .hero-btn-wrap,
+#buks-landing .hero.hero-loaded .hero-note {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* лесенка по времени */
+#buks-landing .hero.hero-loaded .hero-title    { transition-delay: 0.00s; }
+#buks-landing .hero.hero-loaded .hero-sub      { transition-delay: 0.18s; }
+#buks-landing .hero.hero-loaded .steps         { transition-delay: 0.36s; }
+#buks-landing .hero.hero-loaded .hero-btn-wrap { transition-delay: 0.54s; }
+#buks-landing .hero.hero-loaded .hero-note     { transition-delay: 0.72s; }
   
 </style>
  
@@ -2257,6 +2333,19 @@ document.addEventListener("DOMContentLoaded", () => {
         hero.classList.add('hero-loaded');
       }, 150);
     }
+  });
+</script>
+
+<script>
+  // Плавное появление первого экрана при загрузке
+  window.addEventListener('load', function () {
+    var hero = document.querySelector('#buks-landing .hero');
+    if (!hero) return;
+
+    // небольшая задержка, чтобы не дёргалось
+    setTimeout(function () {
+      hero.classList.add('hero-loaded');
+    }, 120);
   });
 </script>
   
