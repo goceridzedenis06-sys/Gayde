@@ -1792,6 +1792,14 @@ html, body {
       center top / contain no-repeat;
   background-color: #111;
 }
+
+/* Десктоп: блок "Что тебя ждёт внутри гайда" выше за счёт низа */
+@media (min-width: 900px) {
+  #buks-landing .guide-section {
+    padding-top: 45px;      /* оставляем как сейчас */
+    padding-bottom: 220px;  /* было 150px, увеличили высоту снизу */
+  }
+}
   
 </style>
 
