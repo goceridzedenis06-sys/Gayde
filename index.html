@@ -1689,6 +1689,20 @@ html, body {
     padding-bottom: 150px;/* было 90px */
   }
 }
+
+/* Выравниваем фон блока "Что тебя ждёт внутри гайда" без тёмных полос */
+#buks-landing .guide-section {
+  background:
+    linear-gradient(rgba(40, 40, 40, 0.25), rgba(0, 0, 0, 0.65)),
+    url('https://static.tildacdn.com/tild3061-3836-4766-a263-373861333865/be75922d-2958-4e0f-b.png')
+    center center / cover no-repeat;
+}
+
+/* Отключаем дополнительные затемнения сверху и снизу */
+#buks-landing .guide-section::before,
+#buks-landing .guide-section::after {
+  display: none;
+}
   
 </style>
 
