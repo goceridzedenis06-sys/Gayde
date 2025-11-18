@@ -292,8 +292,8 @@
 #buks-landing .guide-card .icon {
   margin-bottom: 6px;
   transition: all 0.3s ease;
-  width: 28px;   /* 🔹 увеличиваем иконки */
-  height: 28px;
+  width: 44px;   /* 🔹 увеличиваем иконки */
+  height: 44px;
 }
 
 /* При наведении светятся иконки */
@@ -2218,33 +2218,91 @@ html, body {
   </svg>
 </h2>
 
-    <div class="guide-grid">
-      <div class="guide-row">
-        <div class="guide-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#2ECC71" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
-          <p>Как быстро отсеивать мусор и находить задания, которые реально платят</p>
-        </div>
-        <div class="guide-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#2ECC71" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <p>Пошаговая система вместо “кнопки бабло” — ты просто повторяешь алгоритм</p>
-        </div>
-        <div class="guide-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#2ECC71" stroke-width="2" viewBox="0 0 24 24"><path d="M3 4h18v12H3zM0 20h24"/></svg>
-          <p>Старт с нуля за один вечер: что сделать, чтобы увидеть первые деньги уже сегодня</p>
-        </div>
-      </div>
-
-      <div class="guide-row">
-        <div class="guide-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#2ECC71" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a1 1 0 0 0 .86 1.5h18.64a1 1 0 0 0 .86-1.5L13.71 3.86a1 1 0 0 0-1.72 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <p>Как окупить стоимость гайда уже на этапе обучения и не сливать время впустую</p>
-        </div>
-        <div class="guide-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#2ECC71" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2m0 0c1.1 0 2 .9 2 2s-.9 2-2 2m0-4v-4m-8 8h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg>
-          <p>Моя схема выхода на +2000₽ за несколько часов</p>
-        </div>
-      </div>
+   <div class="guide-grid">
+  <div class="guide-row">
+    <!-- 1. Фильтр мусора и поиск нормальных задач -->
+    <div class="guide-card">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24" fill="none"
+           stroke="#2ECC71" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <!-- воронка-фильтр -->
+        <path d="M4 4h16l-6 7v4.5l-4 2v-6.5L4 4z"/>
+        <!-- монетка внизу -->
+        <circle cx="12" cy="16" r="1.3"/>
+      </svg>
+      <p>Как быстро отсеивать мусор и находить задания, которые реально платят</p>
     </div>
+
+    <!-- 2. Пошаговая система вместо “кнопки бабло” -->
+    <div class="guide-card">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24" fill="none"
+           stroke="#2ECC71" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <!-- чек-лист -->
+        <path d="M9 7h10"/>
+        <path d="M9 12h10"/>
+        <path d="M9 17h10"/>
+        <path d="M4 7l2 2 3-3"/>
+        <path d="M4 12l2 2 3-3"/>
+        <path d="M4 17l2 2 3-3"/>
+      </svg>
+      <p>Пошаговая система вместо “кнопки бабло” — ты просто повторяешь алгоритм</p>
+    </div>
+
+    <!-- 3. Старт с нуля за один вечер -->
+    <div class="guide-card">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24" fill="none"
+           stroke="#2ECC71" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <!-- корпус ракеты -->
+        <path d="M12 2c2.5 2 4 4.7 4 7.5a4 4 0 1 1-8 0C8 6.7 9.5 4 12 2z"/>
+        <!-- иллюминатор -->
+        <circle cx="12" cy="9" r="1.2"/>
+        <!-- крылья -->
+        <path d="M9 13.5L7 16.5v3l3-1.7"/>
+        <path d="M15 13.5l2 3v3l-3-1.7"/>
+        <!-- огонь -->
+        <path d="M11.3 17.8c.3.7.5 1.3.5 2
+                 .7-.3 1.3-.9 1.6-1.7"/>
+      </svg>
+      <p>Старт с нуля за один вечер: что сделать, чтобы увидеть первые деньги уже сегодня</p>
+    </div>
+  </div>
+
+  <div class="guide-row">
+    <!-- 4. Как окупить стоимость гайда -->
+    <div class="guide-card">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24" fill="none"
+           stroke="#2ECC71" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <!-- кошелёк -->
+        <rect x="3" y="8" width="18" height="11" rx="2"/>
+        <path d="M15 11h4v5h-4a2 2 0 0 1 0-5z"/>
+        <circle cx="17" cy="13.5" r="0.9"/>
+      </svg>
+      <p>Как окупить стоимость гайда уже на этапе обучения и не сливать время впустую</p>
+    </div>
+
+    <!-- 5. Моя схема выхода на +2000₽ за несколько часов -->
+    <div class="guide-card">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24" fill="none"
+           stroke="#2ECC71" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <!-- секундомер -->
+        <circle cx="12" cy="13" r="6"/>
+        <path d="M12 9v4l3 2"/>
+        <path d="M10 3h4"/>
+        <path d="M15.5 5.5l1.2-1.2 2 2-1.2 1.2"/>
+      </svg>
+      <p>Моя схема выхода на +2000₽ за несколько часов</p>
+    </div>
+  </div>
+</div>
   </div>
 </section>
 
