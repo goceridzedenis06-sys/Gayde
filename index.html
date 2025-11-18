@@ -1157,19 +1157,6 @@
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Анимация появления карточек при прокрутке */
-#buks-landing .guide-card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-#buks-landing .guide-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-  box-shadow: 0 0 15px rgba(46, 204, 113, 0.25); /* лёгкое свечение */
-}
-
 .icon-pulse {
   margin-left: 8px;
   vertical-align: middle;
@@ -2048,6 +2035,71 @@ html, body {
   transition: all 0.3s ease;
 }
 
+  /* === Анимация блока "Что тебя ждёт внутри гайда" — медленнее и из краёв === */
+
+/* Заголовок: плавное появление ~1.5 секунды */
+#buks-landing .guide-section .guide-section__title {
+  opacity: 0;
+  transform: translateY(-25px); /* чуть сверху */
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+/* Карточки: тоже медленнее */
+#buks-landing .guide-section .guide-card {
+  opacity: 0;
+  transform: translateY(25px); /* немного снизу */
+  transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+/* ВЕРХНИЙ ряд — сильнее из левой стороны (ближе к краю сайта) */
+#buks-landing .guide-section .guide-row:first-child .guide-card {
+  transform: translate(-120px, 25px);
+}
+
+/* НИЖНИЙ ряд — сильнее из правой стороны */
+#buks-landing .guide-section .guide-row:last-child .guide-card {
+  transform: translate(120px, 25px);
+}
+
+/* Когда блок попал в зону видимости */
+#buks-landing .guide-section.js-animate.visible .guide-section__title,
+#buks-landing .guide-section.js-animate.visible .guide-card {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* небольшая лесенка по времени — карточки появляются одна за другой */
+#buks-landing .guide-section.js-animate.visible .guide-row:first-child .guide-card:nth-child(1) { transition-delay: 0.10s; }
+#buks-landing .guide-section.js-animate.visible .guide-row:first-child .guide-card:nth-child(2) { transition-delay: 0.20s; }
+#buks-landing .guide-section.js-animate.visible .guide-row:first-child .guide-card:nth-child(3) { transition-delay: 0.30s; }
+#buks-landing .guide-section.js-animate.visible .guide-row:last-child  .guide-card:nth-child(1) { transition-delay: 0.20s; }
+#buks-landing .guide-section.js-animate.visible .guide-row:last-child  .guide-card:nth-child(2) { transition-delay: 0.30s; }
+
+/* сам контейнер секции не анимируем — он всегда на месте */
+#buks-landing .guide-section.js-animate {
+  opacity: 1;
+  transform: none;
+}
+
+/* Не прячем и не двигаем блок "Почему этот способ реально работает" целиком */
+#buks-landing .why-section.js-animate {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 🔼 Тонкая настройка блока "Почему этот способ реально работает" (только десктоп) */
+@media (min-width: 900px) {
+  /* поднимаем заголовок + карточки ближе к предыдущему блоку */
+  #buks-landing .why-section {
+    padding-top: 60px;   /* было 80px – контент поднимется на 20px */
+    padding-bottom: 80px;/* можно оставить как есть или чуть больше/меньше по вкусу */
+  }
+
+  /* добавляем воздуха между карточками и фразой "Готов начать зарабатывать..." */
+  #buks-landing .inline-cta {
+    margin-top: 72px;    /* было 52px – +20px воздуха */
+  }
+}
   
 </style>
  
@@ -2300,7 +2352,7 @@ html, body {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.35 });
 
     elements.forEach(function (el) {
       observer.observe(el);
@@ -2308,20 +2360,7 @@ html, body {
   });
 </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll("#buks-landing .guide-card");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    cards.forEach(card => observer.observe(card));
-  });
-</script>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
