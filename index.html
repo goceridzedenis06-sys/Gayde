@@ -500,6 +500,20 @@
   animation: neonPulse 3s ease-in-out infinite alternate;
 }
 
+/* Плавное появление заголовка "Почему этот способ реально работает" */
+#buks-landing .why-section .why-section_title {
+  opacity: 0;
+  transform: translateY(-25px); /* слегка сверху */
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+/* Когда блок попал в зону видимости */
+#buks-landing .why-section.js-animate.visible .why-section_title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s; /* можно играть 0–0.4s по вкусу */
+}
+  
 .icon-pulse {
   width: 110px;
   height: 110px;
@@ -1910,8 +1924,9 @@ html, body {
 #buks-landing .hero-btn-wrap,
 #buks-landing .hero-note {
   opacity: 0;
-  transform: translateY(24px);                    /* по умолчанию снизу */
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transform: translateY(24px);
+  /* было 0.9s – сделали медленнее */
+  transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 /* Для заголовка и подзаголовка – наоборот, сверху */
@@ -1932,10 +1947,10 @@ html, body {
 
 /* Небольшие задержки, чтобы всё появлялось «лесенкой» */
 #buks-landing .hero.hero-loaded .hero-title      { transition-delay: 0.00s; }
-#buks-landing .hero.hero-loaded .hero-sub        { transition-delay: 0.10s; }
-#buks-landing .hero.hero-loaded .steps           { transition-delay: 0.20s; }
-#buks-landing .hero.hero-loaded .hero-btn-wrap   { transition-delay: 0.30s; }
-#buks-landing .hero.hero-loaded .hero-note       { transition-delay: 0.40s; }
+#buks-landing .hero.hero-loaded .hero-sub        { transition-delay: 0.30s; }
+#buks-landing .hero.hero-loaded .steps           { transition-delay: 0.60s; }
+#buks-landing .hero.hero-loaded .hero-btn-wrap   { transition-delay: 0.90s; }
+#buks-landing .hero.hero-loaded .hero-note       { transition-delay: 1.20s; }
 
 /* === ФИНАЛЬНАЯ НАСТРОЙКА ПЕРВОГО ЭКРАНА — ОБНОВЛЁННО === */
 
@@ -2098,6 +2113,85 @@ html, body {
   /* добавляем воздуха между карточками и фразой "Готов начать зарабатывать..." */
   #buks-landing .inline-cta {
     margin-top: 72px;    /* было 52px – +20px воздуха */
+  }
+}
+
+/* === CTA с эффектом печати === */
+
+#buks-landing .inline-cta {
+  margin: 52px auto 0;
+  max-width: 640px;
+  text-align: center;
+}
+
+/* Заголовок, в который будем "печатать" текст */
+#buks-landing .inline-cta__title {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Мигающий курсор, пока идёт печать */
+#buks-landing .inline-cta__title.typing::after {
+  content: "▌";
+  position: absolute;
+  right: -8px;
+  bottom: 4px;
+  animation: ctaCaretBlink 0.8s steps(1) infinite;
+}
+
+/* Когда допечатали — курсор убираем */
+#buks-landing .inline-cta__title.typed::after {
+  display: none;
+}
+
+@keyframes ctaCaretBlink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* Текст под заголовком и кнопка — изначально скрыты и ниже */
+#buks-landing .inline-cta__text,
+#buks-landing .inline-cta .btn-primary {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Параметры текста, чтобы не потерять старый стиль */
+#buks-landing .inline-cta__text {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 26px;
+  opacity: 0; /* перекрываем старое 0.95 */
+}
+
+/* Когда добавляем блоку класс .cta-shown — текст и кнопка всплывают */
+#buks-landing .inline-cta.cta-shown .inline-cta__text,
+#buks-landing .inline-cta.cta-shown .btn-primary {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Кнопка чуть позже текста */
+#buks-landing .inline-cta.cta-shown .btn-primary {
+  transition-delay: 0.15s;
+}
+
+/* Мобилка — чуть поменьше шрифты */
+@media (max-width: 600px) {
+  #buks-landing .inline-cta__title {
+    font-size: 24px;
+  }
+
+  #buks-landing .inline-cta__text {
+    font-size: 16px;
+  }
+
+  #buks-landing .inline-cta {
+    margin-top: 40px;
   }
 }
   
@@ -2465,17 +2559,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const hero = document.querySelector('#buks-landing .hero');
-    if (hero) {
-      // маленькая задержка, чтобы успело отрисоваться
-      setTimeout(function () {
-        hero.classList.add('hero-loaded');
-      }, 150);
-    }
-  });
-</script>
+
 
 <script>
   // Плавное появление первого экрана при загрузке
@@ -2483,11 +2567,74 @@ document.addEventListener("DOMContentLoaded", () => {
     var hero = document.querySelector('#buks-landing .hero');
     if (!hero) return;
 
-    // небольшая задержка, чтобы не дёргалось
+    // чуть дольше ждём и только потом запускаем "лестницу"
     setTimeout(function () {
       hero.classList.add('hero-loaded');
-    }, 120);
+    }, 350); // было 120 мс – теперь медленнее
   });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const cta = document.querySelector('#buks-landing .inline-cta');
+  if (!cta) return;
+
+  const titleEl = cta.querySelector('.inline-cta__title');
+  if (!titleEl) return;
+
+  const fullText = titleEl.textContent.trim(); // оригинальная фраза
+  titleEl.textContent = '';                    // очищаем
+  titleEl.classList.add('typing');             // включаем курсор
+
+  let hasTyped = false;
+
+  function typeText() {
+    if (hasTyped) return;
+    hasTyped = true;
+
+    let index = 0;
+
+    function typeNext() {
+      if (index <= fullText.length) {
+        titleEl.textContent = fullText.slice(0, index);
+        index++;
+
+        // "Человеческая" задержка: база + небольшой рандом
+        const baseDelay = 70;      // средняя скорость
+        const randomness = 90;     // разброс
+        const delay = baseDelay + Math.random() * randomness;
+
+        setTimeout(typeNext, delay);
+      } else {
+        // закончили печать
+        titleEl.classList.remove('typing');
+        titleEl.classList.add('typed');
+
+        // показываем текст и кнопку под заголовком
+        cta.classList.add('cta-shown');
+      }
+    }
+
+    typeNext();
+  }
+
+  // Запускаем печать, когда блок с CTA попадает в зону видимости
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          typeText();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    observer.observe(cta);
+  } else {
+    // старые браузеры — просто запускаем сразу
+    typeText();
+  }
+});
 </script>
   
 </body>
