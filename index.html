@@ -2194,6 +2194,19 @@ html, body {
     margin-top: 40px;
   }
 }
+
+  /* Мобильная подстройка первого блока: кнопка ближе к шагам */
+@media (max-width: 600px) {
+  /* меньше воздуха под тремя шагами */
+  #buks-landing .steps {
+    margin-bottom: 14px; /* было гораздо больше */
+  }
+
+  /* кнопку подтягиваем почти вплотную к шагам */
+  #buks-landing .hero-btn-wrap {
+    margin-top: 8px !important; /* вместо 60–70px */
+  }
+}
   
 </style>
  
