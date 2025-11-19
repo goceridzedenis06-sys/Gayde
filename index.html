@@ -2207,6 +2207,87 @@ html, body {
     margin-top: 8px !important; /* вместо 60–70px */
   }
 }
+
+  /* Мобилка: карточки во 2-м блоке ближе к заголовку */
+@media (max-width: 600px) {
+  #buks-landing .guide-grid {
+    margin-top: 32px;  /* было ~100–130px, теперь близко к заголовку */
+  }
+}
+
+  /* === ОДИНАКОВЫЕ ОТСТУПЫ МЕЖДУ КАРТОЧКАМИ В БЛОКЕ "ЧТО ТЕБЯ ЖДЁТ ВНУТРИ ГАЙДА" === */
+
+/* чуть ниже от заголовка, но без огромной дырки */
+#buks-landing .guide-grid {
+  margin-top: 70px;
+}
+
+/* одинаковый отступ и по горизонтали, и по вертикали */
+#buks-landing .guide-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;      /* можно 20–28 по вкусу */
+  margin: 0;      /* убираем дополнительные внешние отступы */
+}
+
+/* убираем отдельный большой отступ между верхним и нижним рядом */
+#buks-landing .guide-row + .guide-row {
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  #buks-landing .guide-card--hide-mobile {
+    display: none;
+  }
+}
+
+/* Мобильная версия блока "Почему этот способ реально работает" */
+@media (max-width: 600px) {
+
+  /* Заголовок — меньше и компактнее */
+  #buks-landing .why-section_title {
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+
+  /* Иконка галочки рядом с заголовком тоже поменьше */
+  #buks-landing .icon-pulse {
+    width: 28px;
+    height: 28px;
+    margin-left: 6px;
+  }
+}
+
+  @media (max-width: 600px) {
+
+  /* Сами карточки ниже заголовка */
+  #buks-landing .why-item {
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  /* Иконка в карточке */
+  #buks-landing .why-item .icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 6px;
+  }
+
+  /* Текст в карточке */
+  #buks-landing .why-item p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Чуть меньше вертикальные отступы всего блока */
+  #buks-landing .why-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
   
 </style>
  
@@ -2328,7 +2409,7 @@ html, body {
    <div class="guide-grid">
   <div class="guide-row">
     <!-- 1. Фильтр мусора и поиск нормальных задач -->
-    <div class="guide-card">
+    <div class="guide-card guide-card--hide-mobile">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg"
            viewBox="0 0 24 24" fill="none"
            stroke="#2ECC71" stroke-width="2"
@@ -2541,7 +2622,7 @@ html, body {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.35 });
+    }, { threshold: 0.15 });
 
     elements.forEach(function (el) {
       observer.observe(el);
