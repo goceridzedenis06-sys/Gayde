@@ -2336,7 +2336,7 @@ html, body {
   }
 
   /* сама карточка — копия guide-card по размерам и стилю */
-  #buks-landing .why-item {
+ #buks-landing .why-item {
     width: 92%;
     max-width: 380px;
     padding: 16px 16px;
@@ -2349,13 +2349,12 @@ html, body {
       inset 0 0 10px rgba(255, 255, 255, 0.03);
 
     text-align: center;
-    margin: 0 auto;
-    min-height: 130px; /* чтобы по высоте были как во втором блоке */
+    margin: 0 auto 16px;   /* 🔑 вместо 70px снизу делаем 16px */
+    min-height: 120px;     /* можешь уменьшить/увеличить по вкусу */
 
     font-weight: 500;
     letter-spacing: 0;
   }
-
   /* иконки как в guide-card */
   #buks-landing .why-item .icon {
     width: 44px;
@@ -2368,6 +2367,17 @@ html, body {
     font-size: 15px;
     line-height: 1.5;
     margin: 0;
+  }
+}
+
+  /* Мобильная версия: рамка у карточек "Почему это работает" как в предыдущем блоке */
+@media (max-width: 600px) {
+  #buks-landing .why-item {
+    border: 1px solid rgba(46, 204, 113, 0.15); /* стало ярче */
+  }
+
+  #buks-landing .why-item:hover {
+    border-color: rgba(46, 204, 113, 0.4);
   }
 }
   
