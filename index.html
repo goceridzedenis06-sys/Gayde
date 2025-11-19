@@ -2288,6 +2288,88 @@ html, body {
     padding-bottom: 40px;
   }
 }
+
+/* === Мобильная настройка блока "Почему это работает" === */
+@media (max-width: 600px) {
+  /* Заголовок компактнее и по центру */
+  #buks-landing .why-section_title {
+    font-size: 24px;
+    line-height: 1.25;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  /* Иконка в заголовке — крупнее, как в карточках */
+  #buks-landing .why-section_title .icon-pulse {
+    width: 32px;
+    height: 32px;
+    margin-left: 6px;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 6px rgba(46, 204, 113, 0.8));
+  }
+
+  /* Колонка карточек как во втором блоке: одна под другой, аккуратно по ширине */
+  #buks-landing .why-columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  #buks-landing .why-item {
+    width: 92%;
+    max-width: 380px;
+    padding: 12px 16px;
+  }
+}
+
+  /* === МОБИЛЬНО: карточки "Почему это работает"
+       такие же, как во "Что тебя ждёт внутри гайда" === */
+@media (max-width: 600px) {
+
+  /* контейнер как во втором блоке */
+  #buks-landing .why-columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;               /* расстояние между карточками */
+  }
+
+  /* сама карточка — копия guide-card по размерам и стилю */
+  #buks-landing .why-item {
+    width: 92%;
+    max-width: 380px;
+    padding: 16px 16px;
+    border-radius: 14px;
+
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(46, 204, 113, 0.15);
+    box-shadow:
+      0 0 14px rgba(0, 0, 0, 0.5),
+      inset 0 0 10px rgba(255, 255, 255, 0.03);
+
+    text-align: center;
+    margin: 0 auto;
+    min-height: 130px; /* чтобы по высоте были как во втором блоке */
+
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  /* иконки как в guide-card */
+  #buks-landing .why-item .icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 8px;
+  }
+
+  /* текст как в карточках "что тебя ждёт" на мобилке */
+  #buks-landing .why-item p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
   
 </style>
  
@@ -2729,6 +2811,31 @@ document.addEventListener('DOMContentLoaded', function () {
     typeText();
   }
 });
+</script>
+
+<script>
+  // Мобильный заголовок "Почему это работает"
+  document.addEventListener('DOMContentLoaded', function () {
+    const title = document.querySelector('#buks-landing .why-section_title');
+    if (!title) return;
+
+    const desktopHTML = title.innerHTML;            // как есть сейчас
+    const svg = title.querySelector('svg');
+    const svgHTML = svg ? svg.outerHTML : '';
+
+    function updateWhyTitle() {
+      if (window.innerWidth <= 600) {
+        // короткий текст + та же иконка
+        title.innerHTML = 'Почему это работает ' + svgHTML;
+      } else {
+        // возвращаем исходный вариант для десктопа/планшета
+        title.innerHTML = desktopHTML;
+      }
+    }
+
+    updateWhyTitle();                 // сразу при загрузке
+    window.addEventListener('resize', updateWhyTitle); // при смене ширины
+  });
 </script>
   
 </body>
