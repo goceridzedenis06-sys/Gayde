@@ -2122,7 +2122,6 @@ html, body {
 }
 
 /* === CTA с эффектом печати === */
-
 #buks-landing .inline-cta {
   margin: 52px auto 0;
   max-width: 640px;
@@ -2138,23 +2137,18 @@ html, body {
   display: inline-block;
 }
 
-/* Текст заголовка, который постепенно печатается */
-#buks-landing .inline-cta__title-text {
-  white-space: pre-wrap;
-}
-
-/* Живой курсор, идёт сразу за текстом */
-#buks-landing .inline-cta__caret {
-  display: inline-block;
-  margin-left: 4px;
+/* Мигающий курсор, пока идёт печать */
+#buks-landing .inline-cta__title.typing::after {
+  content: "▌";
+  position: absolute;
+  right: -8px;
+  bottom: 4px;
   animation: ctaCaretBlink 0.8s steps(1) infinite;
 }
 
-/* На всякий случай глушим старый псевдо-курсор (::after) */
-#buks-landing .inline-cta__title.typing::after,
+/* Когда допечатали — курсор убираем */
 #buks-landing .inline-cta__title.typed::after {
-  content: none !important;
-  display: none !important;
+  display: none;
 }
 
 @keyframes ctaCaretBlink {
@@ -2162,15 +2156,16 @@ html, body {
   50.01%, 100% { opacity: 0; }
 }
 
-/* Текст под заголовком и кнопка — изначально скрыты и ниже */
+/* Текст под заголовком и кнопка — изначально скрыты и чуть ниже */
 #buks-landing .inline-cta__text,
 #buks-landing .inline-cta .btn-primary {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(26px);              /* было 18px */
+  transition: opacity 1.2s ease,            /* было 0.8s */
+              transform 1.2s ease;
 }
 
-/* Параметры текста, чтобы не потерять старый стиль */
+/* Параметры текста */
 #buks-landing .inline-cta__text {
   font-size: 18px;
   line-height: 1.6;
@@ -2178,16 +2173,22 @@ html, body {
   opacity: 0; /* перекрываем старое 0.95 */
 }
 
-/* Когда добавляем блоку класс .cta-shown — текст и кнопка всплывают */
+/* Когда добавляем блоку класс .cta-shown — текст и кнопка плавно всплывают */
 #buks-landing .inline-cta.cta-shown .inline-cta__text,
 #buks-landing .inline-cta.cta-shown .btn-primary {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Кнопка чуть позже текста */
+/* Кнопка появляется чуть позже текста и помедленнее */
 #buks-landing .inline-cta.cta-shown .btn-primary {
-  transition-delay: 0.15s;
+  transition-delay: 0.35s; /* было 0.15s */
+}
+
+/* Более компактная кнопка именно в нижнем CTA */
+#buks-landing .inline-cta .btn-primary {
+  font-size: 17px;         /* чуть меньше, чем основная */
+  padding: 10px 30px;      /* меньше по высоте и ширине */
 }
 
 /* Мобилка — чуть поменьше шрифты */
@@ -2202,6 +2203,14 @@ html, body {
 
   #buks-landing .inline-cta {
     margin-top: 40px;
+  }
+
+  /* 🔽 нижняя кнопка меньше только на мобилке */
+  #buks-landing .inline-cta .btn-primary {
+    font-size: 15px;     /* чуть меньше */
+    padding: 8px 22px;   /* ниже и уже */
+    width: auto;         /* не растягивается на всю ширину */
+    max-width: none;
   }
 }
 
