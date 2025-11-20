@@ -2129,7 +2129,7 @@ html, body {
   text-align: center;
 }
 
-/* Заголовок, в который будем "печатать" текст */
+/* Заголовок, в который "печатаем" текст */
 #buks-landing .inline-cta__title {
   font-size: 30px;
   font-weight: 800;
@@ -2138,18 +2138,23 @@ html, body {
   display: inline-block;
 }
 
-/* Мигающий курсор, пока идёт печать */
-#buks-landing .inline-cta__title.typing::after {
-  content: "▌";
-  position: absolute;
-  right: -8px;
-  bottom: 4px;
+/* Текст заголовка, который постепенно печатается */
+#buks-landing .inline-cta__title-text {
+  white-space: pre-wrap;
+}
+
+/* Живой курсор, идёт сразу за текстом */
+#buks-landing .inline-cta__caret {
+  display: inline-block;
+  margin-left: 4px;
   animation: ctaCaretBlink 0.8s steps(1) infinite;
 }
 
-/* Когда допечатали — курсор убираем */
+/* На всякий случай глушим старый псевдо-курсор (::after) */
+#buks-landing .inline-cta__title.typing::after,
 #buks-landing .inline-cta__title.typed::after {
-  display: none;
+  content: none !important;
+  display: none !important;
 }
 
 @keyframes ctaCaretBlink {
@@ -2689,16 +2694,16 @@ html, body {
 
   <!-- CTA внутри этого же блока -->
   <div class="inline-cta">
-    <h2 class="inline-cta__title">
-      Готов начать зарабатывать на буксах без вложений?
-    </h2>
-    <p class="inline-cta__text">
-      Забирай гайд, повторяй шаги и превращай свободное время в реальные деньги.
-    </p>
-    <a href="#" class="btn btn-primary">
-      Получить гайд за 499₽
-    </a>
-  </div>
+  <h2 class="inline-cta__title">
+    Готов зарабатывать достойные деньги без вложений?
+  </h2>
+  <p class="inline-cta__text">
+    Забирай гайд, повторяй шаги и превращай свободное время в реальные деньги.
+  </p>
+  <a href="#" class="btn btn-primary">
+    Получить гайд за 499₽
+  </a>
+</div>
 </section>
 
  
@@ -2796,9 +2801,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const titleEl = cta.querySelector('.inline-cta__title');
   if (!titleEl) return;
 
-  const fullText = titleEl.textContent.trim(); // оригинальная фраза
-  titleEl.textContent = '';                    // очищаем
-  titleEl.classList.add('typing');             // включаем курсор
+  // Берём фразу из разметки (уже "Готов зарабатывать достойные деньги без вложений?")
+  const fullText = titleEl.textContent.trim();
+
+  // Готовим структуру: <span текст> + <span курсор>
+  titleEl.textContent = '';
+  const textSpan = document.createElement('span');
+  textSpan.className = 'inline-cta__title-text';
+  const caretSpan = document.createElement('span');
+  caretSpan.className = 'inline-cta__caret';
+  caretSpan.textContent = '▌';
+
+  titleEl.appendChild(textSpan);
+  titleEl.appendChild(caretSpan);
+  titleEl.classList.add('typing');
 
   let hasTyped = false;
 
@@ -2810,21 +2826,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function typeNext() {
       if (index <= fullText.length) {
-        titleEl.textContent = fullText.slice(0, index);
+        textSpan.textContent = fullText.slice(0, index);
         index++;
 
         // "Человеческая" задержка: база + небольшой рандом
-        const baseDelay = 70;      // средняя скорость
-        const randomness = 90;     // разброс
+        const baseDelay = 70;
+        const randomness = 90;
         const delay = baseDelay + Math.random() * randomness;
 
         setTimeout(typeNext, delay);
       } else {
-        // закончили печать
+        // закончили печать — убираем курсор и показываем остальной CTA
         titleEl.classList.remove('typing');
         titleEl.classList.add('typed');
+        caretSpan.style.display = 'none';
 
-        // показываем текст и кнопку под заголовком
         cta.classList.add('cta-shown');
       }
     }
@@ -2845,7 +2861,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     observer.observe(cta);
   } else {
-    // старые браузеры — просто запускаем сразу
+    // Старые браузеры — просто запускаем сразу
     typeText();
   }
 });
