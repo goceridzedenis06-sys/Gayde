@@ -2428,7 +2428,12 @@ html, body {
   }
 }
 
-
+/* Отключаем старую каретку (::after), оставляем только span.inline-cta__cursor */
+#buks-landing .inline-cta__title.typing::after,
+#buks-landing .inline-cta__title.typed::after {
+  content: none !important;
+  display: none !important;
+}
   
 </style>
  
