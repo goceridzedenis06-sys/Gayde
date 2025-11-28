@@ -2520,7 +2520,7 @@ html, body {
   flex-wrap: wrap;
 }
 
-/* Кнопка "Узнать подробнее" — спокойная, не кричащая */
+/* Общий стиль для ссылок "Узнать подробнее" */
 .hero-more-link {
   padding: 12px 28px;
   border-radius: 999px;
@@ -2542,10 +2542,37 @@ html, body {
   transform: translateY(-1px);
 }
 
-/* На мобильных эту кнопку пока прячем */
+/* Мобильная версия по умолчанию скрыта */
+.hero-more-link--mobile {
+  display: none;
+}
+
+/* Мобильная настройка hero */
 @media (max-width: 768px) {
-  .hero-more-link {
+  /* Поднимаем карточки ближе к подзаголовку */
+  .steps {
+    margin-top: 16px;
+  }
+
+  /* Чуть компактнее отступы под кнопками */
+  .hero-btn-wrap {
+    margin-top: 16px;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Десктопную "Узнать подробнее" прячем */
+  .hero-more-link--desktop {
     display: none;
+  }
+
+  /* Показываем мобильную "Узнать подробнее" между карточками и зелёной кнопкой */
+  .hero-more-link--mobile {
+    display: inline-flex;
+    align-self: center;
+    padding: 10px 24px;
+    font-size: 15px;
+    opacity: 0.9;
   }
 }
   
@@ -2643,6 +2670,11 @@ html, body {
     <span>Начни зарабатывать от 2000₽+ за несколько часов.</span>
   </div>
 </div>
+
+<!-- Кнопка "Узнать подробнее" для мобильной версии -->
+    <a href="/about.html" class="hero-more-link hero-more-link--mobile">
+      Узнать подробнее
+    </a>
     
    <div class="hero-btn-wrap">
       <a href="#" class="btn btn-primary">
@@ -2650,7 +2682,7 @@ html, body {
       </a>
 
       <!-- Новая кнопка — только для десктопа -->
-      <a href="/about.html" class="hero-more-link">
+      <a href="/about.html" class="hero-more-link hero-more-link--desktop">
         Узнать подробнее
       </a>
     </div>
