@@ -2623,6 +2623,29 @@ html, body {
     gap: 6px;
   }
 }
+
+/* ✨ Плавное появление кнопки "Узнать подробнее" и подписи про PDF */
+#buks-landing .hero-more-link,
+#buks-landing .hero-note {
+  opacity: 0;                     /* изначально спрятаны */
+  transform: translateY(10px);    /* чуть ниже своего места */
+  transition: opacity 0.8s ease,  /* мягкое появление */
+              transform 0.8s ease;
+}
+
+/* когда первый экран прогружен (.hero-loaded вешается скриптом) */
+#buks-landing .hero.hero-loaded .hero-more-link {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.0s;         /* кнопка всплывает после шагов и зелёной */
+}
+
+#buks-landing .hero.hero-loaded .hero-note {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.25s;        /* подпись появляется ещё чуть позже */
+}
+
   
 </style>
  
