@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>О гайде и обо мне — BUKS.IN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Подробнее о гайде по заработку на буксах и обо мне, Денисе — авторе схемы. Честный опыт без серых схем и пустых обещаний.">
+
+  <style>
+    /* Базовые стили */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #000;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f5f5f5;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-wrap {
+      width: 100%;
+      max-width: 920px;
+      padding: 32px 20px 48px;
+    }
+
+    /* Верхняя панель */
+    .about-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .about-logo {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #2ecc71;
+      text-shadow: 0 0 10px rgba(46,204,113,0.8);
+    }
+
+    .back-link {
+      font-size: 14px;
+      color: #b6ffb9;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(182,255,185,0.5);
+      padding-bottom: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.9;
+      transition: opacity 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+    }
+
+    .back-link span {
+      font-size: 18px;
+    }
+
+    .back-link:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+      border-color: rgba(182,255,185,0.9);
+    }
+
+    /* Заголовок страницы */
+    .about-hero-title {
+      font-size: 34px;
+      font-weight: 800;
+      margin: 0 0 10px;
+      line-height: 1.2;
+      text-shadow:
+        0 0 14px rgba(46,204,113,0.6),
+        0 0 28px rgba(46,204,113,0.35);
+    }
+
+    .about-hero-sub {
+      margin: 0 0 26px;
+      font-size: 18px;
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 620px;
+    }
+
+    .accent {
+      color: #2ecc71;
+    }
+
+    /* Карточка-обёртка для текста */
+    .about-card {
+      background: radial-gradient(circle at top, rgba(46,204,113,0.18), transparent 55%),
+                  rgba(8,8,8,0.96);
+      border-radius: 20px;
+      border: 1px solid rgba(46,204,113,0.35);
+      box-shadow:
+        0 0 18px rgba(0,0,0,0.8),
+        0 0 26px rgba(46,204,113,0.18);
+      padding: 26px 22px 26px;
+      margin-bottom: 26px;
+    }
+
+    .about-section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .about-section-title span.emoji {
+      font-size: 22px;
+    }
+
+    .about-card p {
+      margin: 0 0 10px;
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: 0.95;
+    }
+
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-card ul {
+      margin: 10px 0 4px 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .about-card ul li {
+      position: relative;
+      margin: 4px 0;
+      padding-left: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.96;
+    }
+
+    .about-card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #2ecc71;
+      font-size: 18px;
+    }
+
+    .about-divider {
+      margin: 20px 0;
+      border: none;
+      border-top: 1px dashed rgba(255,255,255,0.15);
+    }
+
+    /* Низ: CTA */
+    .about-cta {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .about-cta-text {
+      font-size: 15px;
+      opacity: 0.85;
+      max-width: 520px;
+    }
+
+    .about-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #2ecc71, #27ae60);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 40px;
+      padding: 12px 26px;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(46,204,113,0.7);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 0 30px rgba(46,204,113,0.95);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #b6ffb9;
+      border-radius: 999px;
+      border: 1px solid rgba(182,255,185,0.5);
+      padding: 10px 22px;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      opacity: 0.9;
+      transition: opacity 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+    }
+
+    .btn-secondary span.icon {
+      font-size: 16px;
+    }
+
+    .btn-secondary:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+      border-color: rgba(182,255,185,0.9);
+    }
+
+    /* Адаптив */
+    @media (max-width: 768px) {
+      .page-wrap {
+        padding: 22px 16px 32px;
+      }
+
+      .about-topbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .about-hero-title {
+        font-size: 26px;
+      }
+
+      .about-hero-sub {
+        font-size: 15px;
+      }
+
+      .about-card {
+        padding: 18px 16px 20px;
+      }
+
+      .about-card p,
+      .about-card ul li {
+        font-size: 15px;
+      }
+
+      .about-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .about-buttons {
+        width: 100%;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="about-topbar">
+      <div class="about-logo">BUKS.IN</div>
+      <a href="/" class="back-link">
+        <span>←</span> На главную
+      </a>
+    </header>
+
+    <main>
+      <h1 class="about-hero-title">О гайде и обо мне</h1>
+      <p class="about-hero-sub">
+        Здесь без маркетинговой мишуры 👀 — только честная история, как я зарабатывал на буксах
+        и что именно ты получишь внутри <span class="accent">гайда</span>.
+      </p>
+
+      <!-- О чём гайд -->
+      <section class="about-card">
+        <h2 class="about-section-title">
+          <span class="emoji">💡</span>
+          О чём вообще этот гайд
+        </h2>
+        <p>
+          Привет! Меня зовут Денис 👋
+        </p>
+        <p>
+          Я тот самый человек, который несколько лет спокойно зарабатывал на буксах —
+          без серых схем, без «секретных ботов» и прочей ерунды. Просто нормальная,
+          рабочая система, доведённая до автоматизма.
+        </p>
+        <p>
+          Этот гайд — не про волшебную кнопку, а про понятную пошаговую схему.
+          Я собрал здесь свой личный опыт: как я выстраивал работу, какие сервисы
+          использовал, как экономил время и не сливал деньги на «чудо-курсы».
+        </p>
+      </section>
+
+      <!-- Немного обо мне -->
+      <section class="about-card">
+        <h2 class="about-section-title">
+          <span class="emoji">👤</span>
+          Немного обо мне
+        </h2>
+        <p>
+          Я не скрываюсь за никнеймами и анонимными каналами. Я обычный парень,
+          который несколько лет жил за счёт заработка в интернете.
+        </p>
+        <p>
+          Последние <strong>три года</strong> основным источником дохода для меня были буксы:
+          я выработал свою связку действий, расписал всё по шагам и просто повторял её
+          день за днём.
+        </p>
+        <p>
+          Сейчас я ушёл в веб-разработку и постепенно переключаюсь на новые проекты.
+          Но бросать рабочую схему жалко — она до сих пор приносит деньги, если ей
+          заниматься.
+        </p>
+        <p>
+          Поэтому я упаковал всё в гайд, чтобы передать эту систему тем, кто хочет:
+        </p>
+        <ul>
+          <li>подработку без вложений;</li>
+          <li>честный и понятный способ заработка;</li>
+          <li>пошаговый план вместо «делай что-нибудь и будет результат».</li>
+        </ul>
+      </section>
+
+      <!-- Без обещаний миллионов -->
+      <section class="about-card">
+        <h2 class="about-section-title">
+          <span class="emoji">⚖️</span>
+          Без обещаний миллионов — только реальность
+        </h2>
+        <p>
+          Сразу честно: здесь <strong>не будет</strong> историй про «200&nbsp;000₽ в первый месяц».
+          Я не даю гарантий дохода — это было бы просто нечестно.
+        </p>
+        <p>Зато я честно говорю, что:</p>
+        <ul>
+          <li>
+            на этой схеме <strong>можно закрывать реальные бытовые расходы</strong>:
+            коммуналку, продукты, часть кредитов;
+          </li>
+          <li>
+            можно обеспечить себе стабильную подушку на мелкие семейные нужды;
+          </li>
+          <li>
+            результат зависит от того, <strong>как ты работаешь</strong> и готов ли придерживаться
+            системы, а не хаотично «тыкаться» по сайтам.
+          </li>
+        </ul>
+        <p>
+          Гайд не зарабатывает за тебя — он экономит время и показывает,
+          <strong>что именно делать</strong>, чтобы не наступать на мои старые грабли.
+        </p>
+      </section>
+
+      <!-- Что внутри -->
+      <section class="about-card">
+        <h2 class="about-section-title">
+          <span class="emoji">📂</span>
+          Что внутри гайда
+        </h2>
+        <p>Внутри ты найдёшь:</p>
+        <ul>
+          <li>какое окружение и сервисы я использовал, чтобы всё работало как конвейер;</li>
+          <li>подробный разбор схемы заработка на буксах: от регистрации до вывода денег;</li>
+          <li>мои личные фишки, как ускорять выполнение заданий и не превращать это в адскую рутину;</li>
+          <li>реальные примеры расчётов: сколько времени уходит и какие суммы можно получать при разной нагрузке;</li>
+          <li>советы, как совмещать эту схему с работой, учёбой или другими делами.</li>
+        </ul>
+        <p>
+          Я собирал это не за одну неделю. Это результат <strong>нескольких лет</strong>, когда я
+          на своей шкуре проверял, что работает, а что — пустая трата времени.
+        </p>
+      </section>
+
+      <!-- Почему за деньги -->
+      <section class="about-card">
+        <h2 class="about-section-title">
+          <span class="emoji">💸</span>
+          Почему я взял деньги за гайд
+        </h2>
+        <p>
+          Сам по себе заработок на буксах — <strong>без вложений</strong>.
+          Ты платишь не за «секретную лазейку», а за:
+        </p>
+        <ul>
+          <li>сэкономленные месяцы проб и ошибок;</li>
+          <li>готовую пошаговую инструкцию;</li>
+          <li>поддержку и честный подход без обещаний золотых гор.</li>
+        </ul>
+        <p>
+          Задача гайда — дать тебе <strong>рабочий инструмент</strong>, а не сказку.  
+          Всё остальное — вопрос твоей дисциплины и готовности работать по системе ✅
+        </p>
+      </section>
+
+      <hr class="about-divider">
+
+      <!-- CTA -->
+      <section class="about-cta">
+        <p class="about-cta-text">
+          Если тебе близок такой подход — без серых схем и сказок про лёгкие миллионы —
+          просто забирай гайд, пройди шаги и сделай свои первые деньги на буксах по
+          уже обкатанной схеме.
+        </p>
+        <div class="about-buttons">
+          <a href="/" class="btn-secondary">
+            <span class="icon">←</span>
+            На главную
+          </a>
+          <a href="/" class="btn-primary">
+            Получить гайд за 499₽
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
