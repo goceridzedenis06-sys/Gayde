@@ -2509,6 +2509,45 @@ html, body {
     margin-top: 2px;
   }
 }
+
+/* Обёртка с кнопками в hero */
+.hero-btn-wrap {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Кнопка "Узнать подробнее" — спокойная, не кричащая */
+.hero-more-link {
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 16px;
+  line-height: 1.2;
+  color: #ffffff;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.hero-more-link:hover {
+  border-color: #2ecc71;
+  box-shadow: 0 0 16px rgba(46, 204, 113, 0.35);
+  transform: translateY(-1px);
+}
+
+/* На мобильных эту кнопку пока прячем */
+@media (max-width: 768px) {
+  .hero-more-link {
+    display: none;
+  }
+}
   
 </style>
  
@@ -2609,7 +2648,13 @@ html, body {
       <a href="#" class="btn btn-primary">
         Получить гайд за 499₽
       </a>
+
+      <!-- Новая кнопка — только для десктопа -->
+      <a href="/about.html" class="hero-more-link">
+        Узнать подробнее
+      </a>
     </div>
+
     <div class="hero-note">
       Моментальный доступ в формате PDF после оплаты
     </div>
