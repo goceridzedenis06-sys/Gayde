@@ -2648,6 +2648,62 @@ html, body {
   transition-delay: 1.25s;        /* подпись появляется ещё чуть позже */
 }
 
+  /* 🔹 МОБИЛЬНАЯ ВЕРСТКА ТРЁХ ШАГОВ: ИКОНКА И ТЕКСТ В ОТДЕЛЬНЫХ "ОВАЛАХ" */
+@media (max-width: 600px) {
+
+  /* контейнер шагов — колонкой с небольшим зазором */
+  #buks-landing .steps {
+    gap: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+  }
+
+  /* сам шаг больше не "таблетка", а просто строка иконка+текст */
+  #buks-landing .step {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  /* круглый овал под SVG */
+  #buks-landing .step-icon {
+    width: 36px;
+    height: 36px;
+    padding: 7px;
+    border-radius: 999px;
+    border: 2px solid rgba(46, 204, 113, 0.9);
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+    flex-shrink: 0;
+  }
+
+  /* отдельный овал только под текст */
+  #buks-landing .step span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(46, 204, 113, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  /* на мобиле убьём тяжёлый hover, чтобы не мигало */
+  #buks-landing .step:hover {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
   
 </style>
  
