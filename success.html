@@ -7,9 +7,7 @@
   <meta name="description" content="Оплата прошла успешно. Мы отправили гайд по заработку на буксах на вашу почту.">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
@@ -66,9 +64,7 @@
       transition: opacity 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
     }
 
-    .home-link span {
-      font-size: 18px;
-    }
+    .home-link span { font-size: 18px; }
 
     .home-link:hover {
       opacity: 1;
@@ -76,7 +72,7 @@
       border-color: rgba(182,255,185,0.9);
     }
 
-    /* Основной блок "спасибо" */
+    /* Основной блок */
     .success-layout {
       display: flex;
       justify-content: center;
@@ -129,10 +125,7 @@
       animation: successPulse 2.6s ease-in-out infinite;
     }
 
-    .success-icon svg {
-      width: 30px;
-      height: 30px;
-    }
+    .success-icon svg { width: 30px; height: 30px; }
 
     @keyframes successPulse {
       0%,100% {
@@ -165,9 +158,7 @@
       opacity: 0.95;
     }
 
-    .success-sub strong {
-      color: #b6ffb9;
-    }
+    .success-sub strong { color: #b6ffb9; }
 
     .success-note {
       font-size: 14px;
@@ -176,9 +167,7 @@
       margin: 0 0 22px;
     }
 
-    .success-note span {
-      color: #b6ffb9;
-    }
+    .success-note span { color: #b6ffb9; }
 
     .success-actions {
       display: flex;
@@ -186,6 +175,7 @@
       gap: 10px;
       justify-content: center;
       margin-top: 6px;
+      margin-bottom: 14px;
     }
 
     .btn-primary,
@@ -230,24 +220,78 @@
       box-shadow: 0 0 18px rgba(46,204,113,0.4);
     }
 
-    .success-mail-hint {
-      margin-top: 10px;
+    .download-note {
       font-size: 13px;
       opacity: 0.8;
+      margin-bottom: 10px;
     }
 
-    .success-mail-hint a {
-      color: #2ecc71;
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(46,204,113,0.7);
-      padding-bottom: 1px;
+    /* Форма для e-mail */
+    .email-block {
+      margin-top: 10px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255,255,255,0.15);
     }
 
-    .success-mail-hint a:hover {
-      border-bottom-color: rgba(46,204,113,1);
+    .email-block-title {
+      font-size: 15px;
+      margin-bottom: 8px;
+      opacity: 0.9;
     }
 
-    /* Футер (тот самый общий) */
+    .success-email-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+
+    .success-email-form input[type="email"] {
+      min-width: 220px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(182,255,185,0.5);
+      background: rgba(0,0,0,0.8);
+      color: #f5f5f5;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .success-email-form input[type="email"]::placeholder {
+      color: rgba(230,255,230,0.6);
+    }
+
+    .success-email-form input[type="email"]:focus {
+      border-color: #2ecc71;
+      box-shadow: 0 0 12px rgba(46,204,113,0.6);
+    }
+
+    .btn-small {
+      padding: 10px 18px;
+      font-size: 14px;
+    }
+
+    .email-desc {
+      font-size: 12px;
+      opacity: 0.75;
+    }
+
+    .email-status {
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .email-status--ok {
+      color: #9bffb0;
+    }
+
+    .email-status--err {
+      color: #ff9b9b;
+    }
+
+    /* Футер общий */
     .footer {
       flex-shrink: 0;
       border-top: 1px solid rgba(120, 255, 160, 0.25);
@@ -274,9 +318,7 @@
       flex-wrap: wrap;
     }
 
-    .footer-copy span {
-      opacity: 0.7;
-    }
+    .footer-copy span { opacity: 0.7; }
 
     .footer-links {
       display: flex;
@@ -298,13 +340,8 @@
       transform: translateY(-1px);
     }
 
-    .footer-separator {
-      opacity: 0.4;
-    }
-
-    .footer-label {
-      opacity: 0.7;
-    }
+    .footer-separator { opacity: 0.4; }
+    .footer-label { opacity: 0.7; }
 
     @media (max-width: 768px) {
       .page-wrap {
@@ -315,17 +352,9 @@
         padding: 22px 18px 22px;
       }
 
-      .success-title {
-        font-size: 24px;
-      }
-
-      .success-sub {
-        font-size: 16px;
-      }
-
-      .success-note {
-        font-size: 13px;
-      }
+      .success-title { font-size: 24px; }
+      .success-sub   { font-size: 16px; }
+      .success-note  { font-size: 13px; }
 
       .success-actions {
         flex-direction: column;
@@ -333,6 +362,16 @@
 
       .btn-primary,
       .btn-secondary {
+        width: 100%;
+      }
+
+      .success-email-form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .success-email-form input[type="email"],
+      .success-email-form button {
         width: 100%;
       }
 
@@ -379,26 +418,45 @@
 
         <h1 class="success-title">Оплата прошла успешно</h1>
         <p class="success-sub">
-          Мы отправили гайд по заработку на буксах на <strong>вашу почту</strong>,
-          указанную при оплате.
+          Гайд по заработку на буксах теперь доступен для скачивания.
         </p>
         <p class="success-note">
-          Обычно письмо приходит в течение нескольких минут.  
-          Если его нет — проверьте папки <span>«Спам»</span>, <span>«Промоакции»</span> или
-          <span>«Рассылки»</span>.
+         Если файл не начал скачиваться автоматически, воспользуйтесь кнопкой
+  «Скачать гайд (PDF)» ниже.
         </p>
 
-        <div class="success-actions">
-          <a href="/" class="btn-primary">Вернуться на главную</a>
-          <a href="mailto:support@buks-guide.ru" class="btn-secondary">
-            Написать в поддержку
-          </a>
+        <div class="download-note">
+          Если файл не скачался автоматически, воспользуйтесь кнопкой ниже:
         </div>
 
-        <p class="success-mail-hint">
-          Если в течение 15–20 минут письмо так и не пришло — напишите на
-          <a href="mailto:support@buks-guide.ru">support@buks-guide.ru</a>, мы вручную вышлем вам гайд.
-        </p>
+        <div class="success-actions">
+          <!-- 🔽 прямая ссылка на PDF -->
+          <div class="success-actions">
+  <a href="/files/buks-guide.pdf" class="btn-secondary" download>
+    Скачать гайд (PDF)
+  </a>
+</div>
+
+
+        <!-- Блок с e-mail -->
+        <div class="email-block">
+          <div class="email-block-title">
+            Не получилось скачать? Получите гайд на e-mail:
+          </div>
+
+          <form class="success-email-form" action="send_guide.php" method="post">
+            <input type="email" name="email" placeholder="Ваш e-mail" required>
+            <button type="submit" class="btn-primary btn-small">
+              Получить гайд на почту
+            </button>
+          </form>
+
+          <div class="email-desc">
+            Мы отправим письмо со ссылкой на скачивание гайда.
+          </div>
+
+          <div id="email-status" class="email-status"></div>
+        </div>
       </section>
     </main>
   </div>
@@ -430,13 +488,43 @@
   </footer>
 
   <script>
-    // плавное появление карточки "спасибо"
+    // плавное появление карточки
     window.addEventListener('load', function () {
       var card = document.getElementById('success-card');
-      if (!card) return;
-      setTimeout(function () {
-        card.classList.add('visible');
-      }, 200);
+      if (card) {
+        setTimeout(function () {
+          card.classList.add('visible');
+        }, 200);
+      }
+
+      // попытка авто-скачивания PDF
+      // ⚠️ путь к файлу подправь при необходимости
+      /*
+      var pdfUrl = '/files/buks-guide.pdf';
+      try {
+        var link = document.createElement('a');
+        link.href = pdfUrl;
+        link.setAttribute('download', 'buks-guide.pdf');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } catch (e) {
+        // если браузер заблокировал — пользователь просто увидит кнопку "Скачать"
+      }
+*/
+      // показываем статус "Письмо отправлено" по параметру ?sent=1 или ?sent=0
+      var statusEl = document.getElementById('email-status');
+      if (!statusEl) return;
+
+      var params = new URLSearchParams(window.location.search);
+      var sent = params.get('sent');
+      if (sent === '1') {
+        statusEl.textContent = 'Письмо отправлено! Проверьте почту (включая Спам и Промоакции).';
+        statusEl.classList.add('email-status--ok');
+      } else if (sent === '0') {
+        statusEl.textContent = 'Не удалось отправить письмо. Попробуйте ещё раз или напишите в поддержку.';
+        statusEl.classList.add('email-status--err');
+      }
     });
   </script>
 </body>
