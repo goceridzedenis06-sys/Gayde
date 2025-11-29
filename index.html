@@ -2464,9 +2464,11 @@ html, body {
 }
 
 .footer-links {
+  display: flex;       /* 🔹 добавили это */
   gap: 10px;
   flex-wrap: wrap;
 }
+
 
 .footer-link {
   color: #b6ffb9;
@@ -2966,14 +2968,11 @@ html, body {
     </div>
 
     <div class="footer-block footer-links">
-      <a href="/oferta.html" class="footer-link">Публичная оферта</a>
+      <a href="oferta.html" class="footer-link">Публичная оферта</a>
       <span class="footer-separator">•</span>
-      <a href="/privacy.html" class="footer-link">Политика конфиденциальности</a>
-    </div>
-
-    <div class="footer-block footer-inn">
-      <span class="footer-label">ИНН:</span>
-      <span>250909219904</span>
+      <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
+      <span class="footer-separator">•</span>
+      <a href="about.html" class="footer-link">О гайде</a>
     </div>
 
     <div class="footer-block footer-contact">
@@ -2981,9 +2980,13 @@ html, body {
       <a href="mailto:support@buks-guide.ru" class="footer-link">
         support@buks-guide.ru
       </a>
+      <span class="footer-separator">•</span>
+      <span class="footer-label">ИНН:</span>
+      <span>250909219904</span> <!-- 🔁 сюда подставь свой ИНН -->
     </div>
   </div>
 </footer>
+
 
   
 </div>
